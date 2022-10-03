@@ -20,9 +20,9 @@ BOOK_COUNT = 1200
 
 def fillTable(columnNames: list, tableEntities: list, csvFileName: str):
     outputCsv = open(csvFileName, "w", newline='')
-    csvWriter = csv.writer(outputCsv)
-    csvWriter.writerow(columnNames)
-    csvWriter.writerows(tableEntities)
+    csvwriter = csv.writer(outputCsv)
+    csvwriter.writerow(columnNames)
+    csvwriter.writerows(tableEntities)
 
 
 def generateReader(faker: Faker, currentId: int):
@@ -44,15 +44,15 @@ def generateCard(faker: Faker, currentId: int):
     return cardSample
 
 
-def generateWriter(faker: Faker, currentId: int):
-    writerSample = []
-    writerSample.append(currentId)
-    writerSample.append(faker.last_name())
-    writerSample.append(faker.first_name())
-    writerSample.append(faker.middle_name())
-    writerSample.append(faker.date_of_birth())
-    writerSample.append(faker.country())
-    return writerSample
+def generateAuthor(faker: Faker, currentId: int):
+    authorSample = []
+    authorSample.append(currentId)
+    authorSample.append(faker.last_name())
+    authorSample.append(faker.first_name())
+    authorSample.append(faker.middle_name())
+    authorSample.append(faker.date_of_birth())
+    authorSample.append(faker.country())
+    return authorSample
 
 
 def generatePublisher(faker: Faker, currentId: int):
@@ -68,7 +68,7 @@ def generatePublisher(faker: Faker, currentId: int):
 
 def generateCsvWithReaders(count: int):
     columnNames = ['id', 'lastname', 'firstname',
-                   'middlename', 'birthday', 'country']
+                   'middlename', 'birthday', 'card_id']
     allReaders = []
     faker = Faker('ru_RU')
     for i in range(1, count + 1):
@@ -87,15 +87,15 @@ def generateCsvWithCards(count: int):
     fillTable(columnNames, allCards, "csv/cards.csv")
 
 
-def generateCsvWithWriters(count: int):
+def generateCsvWithAuthors(count: int):
     columnNames = ['id', 'lastname', 'firstname',
-                   'middlename', 'birthday', 'card_id']
-    allWriters = []
+                   'middlename', 'birthday', 'country']
+    allAuthors = []
     faker = Faker('ru_RU')
     for i in range(1, count + 1):
-        allWriters.append(generateWriter(faker, i))
+        allAuthors.append(generateAuthor(faker, i))
 
-    fillTable(columnNames, allWriters, "csv/writers.csv")
+    fillTable(columnNames, allAuthors, "csv/authors.csv")
 
 
 def generateCsvWithPublishers(count: int):
@@ -119,29 +119,29 @@ def generateCsvWithTypes():
 
 
 def generateCsvWithGenres():
-    columnNames = ['type', 'name', 'description']
+    columnNames = ['id', 'type', 'name', 'description']
     allGenres = []
-    allGenres.append(['Техническая', 'Математическая',
+    allGenres.append([1, 'Техническая', 'Математическая',
                      'О математике приментиельно'])
-    allGenres.append(['Техническая', 'Физическая', 'О физике применительно'])
-    allGenres.append(['Техническая', 'Компьютерная',
+    allGenres.append([2, 'Техническая', 'Физическая', 'О физике применительно'])
+    allGenres.append([3, 'Техническая', 'Компьютерная',
                      'О програмировании, раюоту с компьютером и прочем'])
 
-    allGenres.append(['Художественная', 'Детективы', 'Это вымышленные истории, в которых, непременно, действующими лицами являются следователь, расследующий сложное запутанное дело, и подозреваемый. В сюжете обязательно присутствует интрига, и развязка запутанной истории становится ясной лишь в самом её конце.'])
-    allGenres.append(['Художественная', 'Фантастика', 'Особый вид художественной литературы. Автор, как бы заглядывает в будущее и предвосхищает некоторые земные события в своем воображении. Часто фантастика, так и остается фантастикой, но иногда автор очень точно угадывает ход истории или технического прогресса. Книги Жюль Верна — хороший тому пример.'])
-    allGenres.append(['Художественная', 'Детская',
+    allGenres.append([4, 'Художественная', 'Детективы', 'Это вымышленные истории, в которых, непременно, действующими лицами являются следователь, расследующий сложное запутанное дело, и подозреваемый. В сюжете обязательно присутствует интрига, и развязка запутанной истории становится ясной лишь в самом её конце.'])
+    allGenres.append([5, 'Художественная', 'Фантастика', 'Особый вид художественной литературы. Автор, как бы заглядывает в будущее и предвосхищает некоторые земные события в своем воображении. Часто фантастика, так и остается фантастикой, но иногда автор очень точно угадывает ход истории или технического прогресса. Книги Жюль Верна — хороший тому пример.'])
+    allGenres.append([6, 'Художественная', 'Детская',
                      'Книги для детей. Сюда относятся сказки, притчи, поучительные истории, комиксы и раскраски и т.д.'])
-    allGenres.append(['Художественная', 'Классика', 'Книги авторов, стиль письма которых, признан образцом для подражания. Среди русских авторов — это Достоевский, Пушкин, Бунин, Гоголь и другие. Среди зарубежных: Шекспир, Оскар Уайльд, Ирвинг Шоу, Стендаль...'])
-    allGenres.append(['Художественная', 'Поэзия',
+    allGenres.append([7, 'Художественная', 'Классика', 'Книги авторов, стиль письма которых, признан образцом для подражания. Среди русских авторов — это Достоевский, Пушкин, Бунин, Гоголь и другие. Среди зарубежных: Шекспир, Оскар Уайльд, Ирвинг Шоу, Стендаль...'])
+    allGenres.append([8, 'Художественная', 'Поэзия',
                      'Особый вид литературы, когда с помощью ассоциативных образов автор, говорит о глубокий своих переживаниях и чувствах.'])
-    allGenres.append(['Художественная', 'Фэнтези', 'Произведения жанра фэнтези основываются на мифологических и сказочных мотивах, переосмысленных или переработанных авторами. Жанр сформировался примерно в начале XV века. В середине XX века наиболее значительное влияние на формирование современного облика классического фэнтези оказали английские писатели Джон Рональд Руэл Толкин, автор романа «Властелин колец», и Клайв Стейплз Льюис, автор «Хроник Нарнии».'])
+    allGenres.append([9, 'Художественная', 'Фэнтези', 'Произведения жанра фэнтези основываются на мифологических и сказочных мотивах, переосмысленных или переработанных авторами. Жанр сформировался примерно в начале XV века. В середине XX века наиболее значительное влияние на формирование современного облика классического фэнтези оказали английские писатели Джон Рональд Руэл Толкин, автор романа «Властелин колец», и Клайв Стейплз Льюис, автор «Хроник Нарнии».'])
 
     allGenres.append(
-        ['Научная', 'Математика', 'Фундаментальные знания о математике'])
-    allGenres.append(['Научная', 'Философия', 'Особая форма познания и система знаний об общих характеристиках, понятиях и принципах реальности (бытия), а также бытия человека, об отношении человека и окружающего его мира'])
+        [10, 'Научная', 'Математика', 'Фундаментальные знания о математике'])
+    allGenres.append([11, 'Научная', 'Философия', 'Особая форма познания и система знаний об общих характеристиках, понятиях и принципах реальности (бытия), а также бытия человека, об отношении человека и окружающего его мира'])
 
-    allGenres.append(['Учебная', 'Школьная', 'Для школьников'])
-    allGenres.append(['Учебная', 'Вузовская', 'Для студентов'])
+    allGenres.append([12, 'Учебная', 'Школьная', 'Для школьников'])
+    allGenres.append([13, 'Учебная', 'Вузовская', 'Для студентов'])
 
     fillTable(columnNames, allGenres, "csv/genres.csv")
 
@@ -163,4 +163,4 @@ generateCsvWithGenres()
 generateCsvWithPublishers(PUBLISHER_COUNT)
 generateCsvWithReaders(READER_COUNT)
 generateCsvWithTypes()
-generateCsvWithWriters(AUTHOR_COUNT)
+generateCsvWithAuthors(AUTHOR_COUNT)
