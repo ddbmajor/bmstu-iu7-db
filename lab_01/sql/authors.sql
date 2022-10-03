@@ -1,5 +1,5 @@
-drop table if exists public.writer;
-create table public.writer(
+drop table if exists public.author;
+create table public.author(
     id INT primary key,
     lastname TEXT,
     firstname TEXT,
@@ -8,7 +8,7 @@ create table public.writer(
     country TEXT
 );
 
-COPY public.writer FROM '/home/ddbmajor/VUZ/bmstu-iu7-db/lab_01/csv/authors.csv'
+COPY public.author FROM '/tmp/lab01/csv/authors.csv'
 DELIMITER ','
 CSV
 HEADER

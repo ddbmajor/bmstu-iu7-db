@@ -8,7 +8,7 @@ create table public.reader(
     card_id INT references card(id)
 );
 
-COPY public.reader FROM '/home/ddbmajor/VUZ/bmstu-iu7-db/lab_01/csv/readers.csv'
+COPY public.reader FROM '/tmp/lab01/csv/readers.csv'
 DELIMITER ','
 CSV
 HEADER

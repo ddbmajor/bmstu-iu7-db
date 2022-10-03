@@ -6,7 +6,7 @@ create table public.publisher(
     city TEXT
 );
 
-COPY public.publisher FROM '/home/ddbmajor/VUZ/bmstu-iu7-db/lab_01/csv/publishers.csv'
+COPY public.publisher FROM '/tmp/lab01/csv/publishers.csv'
 DELIMITER ','
 CSV
 HEADER
