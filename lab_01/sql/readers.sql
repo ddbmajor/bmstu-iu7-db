@@ -1,4 +1,4 @@
-drop table if exists public.reader;
+drop table if exists publicreader.;
 create table public.reader(
     id INT primary key,
     lastname TEXT,
